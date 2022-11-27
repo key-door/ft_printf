@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:27:31 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/06 16:54:50 by keys             ###   ########.fr       */
+/*   Updated: 2022/11/27 11:59:46 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_lstmap(t_list *lst, void *(f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		new = ft_lstnew(f(lst->content));
-		if (new == NULL)
+		if (!new)
 		{
 			ft_lstclear(&new_map, del);
 			return (NULL);

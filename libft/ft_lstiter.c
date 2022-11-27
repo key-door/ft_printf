@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:27:49 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/06 16:54:37 by keys             ###   ########.fr       */
+/*   Updated: 2022/11/27 11:55:42 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*tmp;
-
 	if (f)
 	{
-		tmp = lst;
-		while (tmp)
+		while (lst)
 		{
-			f(tmp->content);
-			tmp = tmp->next;
+			if (f)
+				f(lst->content);
+			lst = lst->next;
 		}
 	}
 }

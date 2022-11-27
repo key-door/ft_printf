@@ -6,57 +6,45 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 21:42:32 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/06 16:55:57 by keys             ###   ########.fr       */
+/*   Updated: 2022/11/27 11:41:34 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	nbr_ascii(int n, char *str);
-
-void	ft_putnbr_fd(int n, int fd)
+static void	ft_put(long n, int len, int fd)
 {
-	char	str[12];
+	char	ans;
 
-	if (n == -2147483648)
+	if (n >= 10)
 	{
-		str[0] = '-';
-		nbr_ascii(2147483647, &str[1]);
-		str[10] = '8';
-		ft_putstr_fd(str, fd);
-	}
-	else if (n < 0)
-	{
-		str[0] = '-';
-		nbr_ascii(n * -1, &str[1]);
-		ft_putstr_fd(str, fd);
+		ft_put(n / 10, len, fd);
+		ft_put(n % 10, len, fd);
 	}
 	else
 	{
-		nbr_ascii(n, str);
-		ft_putstr_fd(str, fd);
+		ans = n + '0';
+		ft_putchar_fd(ans, fd);
 	}
 }
 
-static void	nbr_ascii(int n, char *str)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	tmp;
-	int	n_len;
-	int	i;
+	long	nbr;
+	char	c;
 
-	i = 0;
-	tmp = n;
-	n_len = 1;
-	while (n / 10 > 0)
+	nbr = n;
+	if (nbr == 0)
 	{
-		n_len *= 10;
-		n /= 10;
+		c = '0';
+		ft_putchar_fd(c, fd);
+		return ;
 	}
-	while (n_len > 0)
+	else if (nbr < 0)
 	{
-		str[i++] = tmp / n_len + 48;
-		tmp -= tmp - (tmp % n_len);
-		n_len /= 10;
+		c = '-';
+		ft_putchar_fd(c, fd);
+		nbr *= -1;
 	}
-	str[i] = '\0';
+	ft_put(nbr, 0, fd);
 }

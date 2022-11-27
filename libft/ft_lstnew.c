@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:02:32 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/06 16:54:56 by keys             ###   ########.fr       */
+/*   Updated: 2022/11/27 11:49:09 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstnew(void *content)
 	t_list	*new_node;
 
 	new_node = malloc(sizeof(t_list));
-	if (new_node == NULL)
+	if (!new_node)
 		return (NULL);
 	new_node->content = content;
 	new_node->next = NULL;

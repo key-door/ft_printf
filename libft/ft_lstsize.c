@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 22:27:55 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/06 16:55:05 by keys             ###   ########.fr       */
+/*   Updated: 2022/11/27 11:50:32 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	ft_lstsize(t_list *lst)
 	int	size;
 
 	size = 0;
-	while (lst != NULL)
+	while (lst)
 	{
-		size++;
 		lst = lst->next;
+		size++;
 	}
 	return (size);
 }

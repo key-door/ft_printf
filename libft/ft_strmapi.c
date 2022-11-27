@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyoda <kyoda@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 12:44:49 by keys              #+#    #+#             */
-/*   Updated: 2022/08/30 08:12:44 by kyoda            ###   ########.fr       */
+/*   Updated: 2022/11/27 11:30:22 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,22 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	len;
-	char	*p;
-	size_t	i;
-	char	*tmp;
+	unsigned int	len;
+	unsigned int	i;
+	char			*p;
 
-	if (!s || !f)
+	if (!s)
 		return (NULL);
 	i = 0;
 	len = ft_strlen(s);
 	p = malloc(len + 1);
-	if (p == NULL)
+	if (!p)
 		return (NULL);
-	tmp = p;
 	while (i < len)
 	{
-		*p = f(i, *s);
-		p++;
+		p[i] = f(i, s[i]);
 		i++;
-		s++;
 	}
-	*p = '\0';
-	return (tmp);
+	ft_memset(&p[i], '\0', 1);
+	return (p);
 }

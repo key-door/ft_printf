@@ -6,7 +6,7 @@
 /*   By: keys <keys@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 20:42:05 by kyoda             #+#    #+#             */
-/*   Updated: 2022/10/06 16:56:19 by keys             ###   ########.fr       */
+/*   Updated: 2022/11/27 05:10:17 by keys             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	ch;
-
-	ch = (char)c;
 	while (1)
 	{
-		if (*s == ch)
+		if (*s == (char)c)
 			return ((char *)s);
-		if (*s == '\0')
+		if (!(*s))
 			break ;
 		s++;
 	}
